@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Dreams Store - Katalog Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. CORE VARIABLES & RESET
+           ========================================= */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --neon-primary: #fff;
+            --neon-accent: #00f2ff;
+            --neon-pink: #ff00ff;
+            --text-main: #ffffff;
+            --text-secondary: #f0f0f0;
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Latar Belakang Awan Dreamy (Overlay) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_1280.png') no-repeat center center/cover;
+            opacity: 0.1; /* Tekstur halus */
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Efek Floating Orbs (Awan Buatan CSS) */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -2;
+            animation: floatOrb 20s infinite alternate;
+        }
+        .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: rgba(161, 140, 209, 0.6); }
+        .orb-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: rgba(251, 194, 235, 0.6); }
+        .orb-3 { top: 40%; left: 40%; width: 30vw; height: 30vw; background: rgba(0, 242, 255, 0.2); }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* =========================================
+           2. NAVIGATION (ANIMASI UNIK)
+           ========================================= */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #00f2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 10px;
+        }
+
+        /* 1. Hover Glow */
+        .nav-item:nth-child(1) a:hover {
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de;
+        }
+        /* 2. Hover Scale */
+        .nav-item:nth-child(2) a:hover {
+            transform: scale(1.2);
+            color: #00f2ff;
+        }
+        /* 3. Hover Glitch (Simulated) */
+        .nav-item:nth-child(3) a:hover {
+            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+            color: #ff9900;
+        }
+        /* 4. Hover Floating */
+        .nav-item:nth-child(4) a:hover {
+            transform: translateY(-5px);
+            border-bottom: 2px solid #fff;
+        }
+        /* 5. Hover Shimmer */
+        .nav-item:nth-child(5) a {
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            transition: background-position 0s;
+        }
+        .nav-item:nth-child(5) a:hover {
+            background-position: -100% 0;
+            transition: background-position 0.5s;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        /* =========================================
+           3. HERO BANNER (APPLE / LIQUID STYLE)
+           ========================================= */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            margin: 2rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeSlideUp 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to bottom, #fff, #a1c4fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-cta {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #00f2ff, #00c6ff);
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.9);
+        }
+
+        /* Elemen Dekoratif 3D Awan */
+        .cloud-deco {
+            position: absolute;
+            width: 300px;
+            height: auto;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 30px rgba(255,255,255,0.4));
+            animation: float 6s ease-in-out infinite;
+        }
+        .cloud-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .cloud-2 { bottom: 10%; right: 5%; animation-delay: 2s; }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* =========================================
+           4. PRODUCT SECTION
+           ========================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Product Card - Glass & Neon */
+        .product-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .card-price {
+            font-size: 1.2rem;
+            color: var(--neon-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .card-reviews {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            font-size: 0.9rem;
+        }
+        
+        .review-text {
+            color: #ccc;
+            margin-left: 5px;
+        }
+
+        /* Buttons Grid */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-buy {
+            background: rgba(0, 242, 255, 0.2);
+            border: 1px solid var(--neon-accent);
+            color: var(--neon-accent);
+            grid-column: span 2; /* Full width */
+        }
+        .btn-buy:hover {
+            background: var(--neon-accent);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-accent);
+        }
+
+        .btn-cart {
+            background: rgba(255, 0, 255, 0.2);
+            border: 1px solid var(--neon-pink);
+            color: var(--neon-pink);
+            grid-column: span 2;
+        }
+        .btn-cart:hover {
+            background: var(--neon-pink);
+            color: white;
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        .btn-call {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #fff;
+        }
+        .btn-call:hover {
+            background: #fff;
+            color: #333;
+        }
+
+        .btn-qris {
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            border: none;
+            color: #fff;
+        }
+        .btn-qris:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 15px #38ef7d;
+        }
+
+        /* =========================================
+           5. TESTIMONIAL & FAQ
+           ========================================= */
+        .testimonial-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding-bottom: 2rem;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+        .testimonial-slider::-webkit-scrollbar { display: none; }
+
+        .testi-card {
+            min-width: 300px;
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .faq-item {
+            background: rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+            color: #ccc;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.5rem;
+        }
+
+        /* =========================================
+           6. FOOTER
+           ========================================= */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+        }
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--neon-accent);
+            text-shadow: 0 0 15px var(--neon-accent);
+        }
+
+        /* =========================================
+           7. MODAL QRIS (POPUP)
+           ========================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Slide from bottom */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(20, 20, 30, 0.95);
+            border: 1px solid var(--neon-accent);
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
+            border-radius: 30px 30px 0 0; /* Rounded top */
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .qris-img {
+            width: 250px;
+            height: 250px;
+            background: #fff;
+            margin: 1rem auto;
+            border-radius: 10px;
+            padding: 10px;
+            /* Placeholder pattern for QR */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg'); 
+            background-size: cover;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; } /* Simplified for mobile demo */
+            .logo { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <nav>
+        <div class="logo"><i class="fas fa-cloud"></i> DreamStore</div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="#home">Home</a></li>
+            <li class="nav-item"><a href="#products">Produk</a></li>
+            <li class="nav-item"><a href="#testi">Review</a></li>
+            <li class="nav-item"><a href="#faq">FAQ</a></li>
+            <li class="nav-item"><a href="#contact">Kontak</a></li>
+        </ul>
+        <div class="mobile-menu-icon" style="color:white; font-size:1.5rem; display:none;"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <header class="hero" id="home">
+        <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud-deco cloud-1" alt="cloud">
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163624.png" class="cloud-deco cloud-2" alt="cloud">
+
+        <div class="hero-content">
+            <h1>Digital Dreams.</h1>
+            <p>Upgrade hidup digitalmu dengan harga terjangkau & instan.</p>
+            <button class="btn-cta" onclick="document.getElementById('products').scrollIntoView();">Lihat Produk</button>
+        </div>
+    </header>
+
+    <main class="container" id="products">
+        <h2 class="section-title">Katalog Premium</h2>
+        <div class="product-grid" id="product-container">
+            </div>
+    </main>
+
+    <section class="container" id="testi">
+        <h2 class="section-title">Testimoni Global</h2>
+        <div class="testimonial-slider">
+            <div class="testi-card">
+                <div class="stars" style="color:#ffd700; margin-bottom:10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Prosesnya cepet banget, admin ramah. Langsung premium!"</p>
+                <h4 style="margin-top:10px; color:var(--neon-accent);">- Sarah J.</h4>
+            </div>
+            <div class="testi-card">
+                <div class="stars" style="color:#ffd700; margin-bottom:10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Spotify murah meriah, awet anti back to free. Thanks!"</p>
+                <h4 style="margin-top:10px; color:var(--neon-accent);">- Budi Santoso</h4>
+            </div>
+            <div class="testi-card">
+                <div class="stars" style="color:#ffd700; margin-bottom:10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Design webnya keren, pelayanan juga oke banget."</p>
+                <h4 style="margin-top:10px; color:var(--neon-accent);">- Linda W.</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="faq">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-item">
+            <div class="faq-question">Apakah ini legal? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Tentu saja, kami menggunakan metode sharing family dan metode legal lainnya.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Berapa lama prosesnya? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Rata-rata proses hanya 5-10 menit setelah pembayaran terkonfirmasi.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Ada garansi? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Ya, kami memberikan garansi full sesuai durasi langganan.</div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h3>DreamStore Official</h3>
+        <p>Solusi Digital Terbaik Anda</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+        <button class="btn-cta" style="font-size: 1rem; padding: 10px 20px;">Hubungi Kami</button>
+        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.6;">&copy; 2023 Digital Dreams Store. All rights reserved.</p>
+    </footer>
+
+    <div class="modal-overlay" id="qrisModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="toggleModal()">&times;</button>
+            <h2 style="color:var(--neon-accent); margin-bottom:10px;">Scan to Pay</h2>
+            <p>Gunakan e-wallet favoritmu untuk membayar.</p>
+            <div class="qris-img"></div>
+            <p style="font-size: 0.9rem; color: #aaa;">Menunggu pembayaran...</p>
+            <button class="btn-buy" style="margin-top:20px; width:100%;" onclick="alert('Pembayaran Terkonfirmasi! (Simulasi)')">Saya Sudah Bayar</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. DATA PRODUK
+        const products = [
+            { id: 1, name: "Alight Motion Premium", price: 41000, desc: "Edit video pro tanpa watermark.", img: "https://placehold.co/600x400/2a2a2a/FFF?text=Alight+Motion" },
+            { id: 2, name: "Canva Lifetime", price: 3000, desc: "Akses fitur pro selamanya.", img: "https://placehold.co/600x400/00c4cc/FFF?text=Canva" },
+            { id: 3, name: "Canva Pro", price: 10000, desc: "Langganan bulanan fitur lengkap.", img: "https://placehold.co/600x400/00c4cc/FFF?text=Canva+Pro" },
+            { id: 4, name: "CapCut Pro", price: 0, desc: "Template premium gratis.", img: "https://placehold.co/600x400/000000/FFF?text=CapCut" },
+            { id: 5, name: "ChatGPT Plus", price: 11000, desc: "AI Cerdas respon cepat.", img: "https://placehold.co/600x400/74aa9c/FFF?text=ChatGPT" },
+            { id: 6, name: "PicsArt Pro", price: 6000, desc: "Edit foto level dewa.", img: "https://placehold.co/600x400/cb2b83/FFF?text=PicsArt" },
+            { id: 7, name: "Prime Video", price: 2000, desc: "Streaming film original Amazon.", img: "https://placehold.co/600x400/00a8e1/FFF?text=Prime" },
+            { id: 8, name: "Scribd Premium", price: 4000, desc: "Baca buku & dokumen unlimited.", img: "https://placehold.co/600x400/1e4b5f/FFF?text=Scribd" },
+            { id: 9, name: "Spotify Premium", price: 36000, desc: "Musik tanpa iklan.", img: "https://placehold.co/600x400/1db954/FFF?text=Spotify" },
+            { id: 10, name: "Viu Premium", price: 113000, desc: "Drakor tanpa jeda iklan.", img: "https://placehold.co/600x400/ffbf00/000?text=Viu" },
+            { id: 11, name: "VPN Express", price: 2000, desc: "Koneksi aman & cepat.", img: "https://placehold.co/600x400/b5121c/FFF?text=ExpressVPN" },
+            { id: 12, name: "VPN HMA", price: 4000, desc: "Hide My Ass VPN Premium.", img: "https://placehold.co/600x400/fecd07/000?text=HMA" },
+            { id: 13, name: "YouTube Premium", price: 17000, desc: "Nonton video bebas iklan.", img: "https://placehold.co/600x400/ff0000/FFF?text=YouTube" },
+            { id: 14, name: "Zoom Pro", price: 15000, desc: "Meeting unlimited duration.", img: "https://placehold.co/600x400/2d8cff/FFF?text=Zoom" },
+        ];
+
+        const productContainer = document.getElementById('product-container');
+
+        // 2. FORMAT RUPIAH
+        const formatRupiah = (number) => {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        }
+
+        // 3. RENDER PRODUK
+        products.forEach(product => {
+            const isFree = product.price === 0;
+            const priceText = isFree ? "GRATIS" : formatRupiah(product.price);
+            
+            // Logic tombol Buy: Jika harga 0, tombol buy tidak dirender
+            const buyButtonHTML = isFree 
+                ? `<button class="btn btn-buy" style="background:#555; color:#aaa; cursor:not-allowed;" disabled>Stok Kosong</button>` 
+                : `<a href="#" class="btn btn-buy">Buy Now</a>`;
+
+            const cardHTML = `
+                <div class="product-card">
+                    <img src="${product.img}" alt="${product.name}" class="card-img">
+                    <div class="card-title">${product.name}</div>
+                    <div class="card-price">${priceText}</div>
+                    <div class="card-desc">${product.desc}</div>
+                    
+                    <div class="card-reviews">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span class="review-text">(3 reviews)</span>
+                    </div>
+
+                    <div class="btn-group">
+                        ${buyButtonHTML}
+                        <button class="btn btn-cart" onclick="addToCart('${product.name}')"><i class="fas fa-cart-plus"></i> Tambah</button>
+                        <button class="btn btn-call"><i class="fas fa-headset"></i> Call</button>
+                        <button class="btn btn-qris" onclick="toggleModal()"><i class="fas fa-qrcode"></i> QRIS</button>
+                    </div>
+                </div>
+            `;
+            productContainer.innerHTML += cardHTML;
+        });
+
+        // 4. INTERAKSI
+        
+        // Modal QRIS Logic
+        function toggleModal() {
+            const modal = document.getElementById('qrisModal');
+            modal.classList.toggle('active');
+        }
+
+        // Add to Cart Logic
+        function addToCart(productName) {
+            // Simulasi animasi/alert
+            alert(productName + " berhasil ditambahkan ke keranjang!");
+        }
+
+        // FAQ Toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Close modal when clicking outside content
+        document.getElementById('qrisModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
